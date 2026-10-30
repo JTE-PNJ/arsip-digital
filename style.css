@@ -18,6 +18,7 @@ h1 { font-size: clamp(28px, 4vw, 38px); margin: 0 0 4px; letter-spacing: -.035em
 .btn-secondary { background: #eaf1fb; color: #164e9b; }
 .btn-secondary:hover:not(:disabled) { background: #dae8fa; }
 .btn-ghost { background: #f0f3f7; color: #364a61; }
+.btn-small { width: fit-content; padding: 9px 13px; font-size: 12px; }
 .full { width: 100%; margin-top: 12px; }
 .columns { display: grid; grid-template-columns: .92fr 1.08fr; gap: 22px; align-items: start; }
 .section-title { display: flex; align-items: center; gap: 14px; margin-bottom: 23px; }
@@ -48,4 +49,15 @@ h3 { margin: 0; font-size: 16px; }
 .message.err { color: #af3333; }
 .message.info { color: #365e9e; }
 footer { text-align: center; margin: 30px 0 0; color: #7b8899; font-size: 12px; }
+/* Penambahan versi folder dosen */
+[hidden] { display: none !important; }
+.nested-fields { display: grid; gap: 8px; padding: 14px; border: 1px solid #dbe7f6; border-radius: 11px; background: #f8fbff; margin: 7px 0; }
+.nested-fields label { margin-top: 0; }
+.folder-heading { display: flex; gap: 10px; align-items: center; justify-content: space-between; flex-wrap: wrap; }
+.link-button { background: none; color: #1759bd; border: none; font: inherit; font-size: 12px; font-weight: 700; cursor: pointer; padding: 4px 0; }
+.link-button:hover:not(:disabled) { text-decoration: underline; }
+.link-button:disabled { opacity: .5; cursor: not-allowed; }
+.new-folder-panel { display: grid; gap: 9px; padding: 13px; border: 1px dashed #abc3e7; background: #fff; border-radius: 9px; margin-top: 3px; }
+.form-group { display: grid; gap: 8px; }
+.required { color: #b33b3b; }
 @media (max-width: 760px) { .columns { grid-template-columns: 1fr; } .connect-card { align-items: stretch; flex-direction: column; } .page { padding: 18px 12px; } .card { padding: 20px; } .header { gap: 12px; } .brandmark { width: 56px; height: 56px; font-size: 20px; } }
