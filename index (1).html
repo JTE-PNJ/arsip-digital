@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <title>Arsip Digital JTE PNJ</title>
+  <link rel="stylesheet" href="style.css?v=20261030-subfolder" />
+</head>
+<body>
+  <div class="page">
+    <header class="header">
+      <div class="brandmark">JTE</div>
+      <div class="heading">
+        <p class="eyebrow">Jurusan Teknik Elektro · Politeknik Negeri Jakarta</p>
+        <h1>Arsip Digital JTE</h1>
+        <p class="subheading">Simpan dan telusuri dokumen melalui Google Drive</p>
+      </div>
+    </header>
+    <section class="card connect-card" aria-label="Koneksi Google Drive">
+      <div class="connect-copy">
+        <p class="eyebrow">KONEKSI DRIVE</p>
+        <p id="connectionStatus" role="status">Belum terhubung. Isi konfigurasi, lalu pilih Hubungkan Google.</p>
+      </div>
+      <div class="button-row">
+        <button id="connectBtn" class="btn btn-primary" type="button">Hubungkan Google</button>
+        <button id="disconnectBtn" class="btn btn-ghost" type="button" disabled>Putus sesi aplikasi</button>
+      </div>
+    </section>
+    <div class="columns">
+      <section class="card" aria-labelledby="uploadHeading">
+        <div class="section-title">
+          <span class="section-icon">↑</span>
+          <div>
+            <h2 id="uploadHeading">Unggah Dokumen</h2>
+            <p>Dokumen disimpan ke kategori dan subfolder dosen yang dipilih.</p>
+          </div>
+        </div>
+        <form id="uploadForm">
+          <label for="categoryUpload">Kategori arsip</label>
+          <select id="categoryUpload" required></select>
+
+          <div id="dosenUploadGroup" class="nested-fields" hidden>
+            <div class="folder-heading">
+              <label for="dosenUpload">Folder nama dosen <span class="required">*</span></label>
+              <button id="refreshDosenBtn" class="link-button" type="button">↻ Perbarui daftar</button>
+            </div>
+            <select id="dosenUpload" aria-describedby="dosenUploadHelp" required>
+              <option value="">Hubungkan Google untuk memuat nama dosen</option>
+            </select>
+            <p id="dosenUploadHelp" class="hint">Pilih nama dosen. Sertifikat akan masuk ke folder dosen tersebut di Google Drive.</p>
+            <button id="showNewDosenBtn" class="btn btn-secondary btn-small" type="button" disabled>+ Tambah Folder Dosen</button>
+            <div id="newDosenPanel" class="new-folder-panel" hidden>
+              <label for="newDosenName">Nama dosen baru</label>
+              <input id="newDosenName" type="text" maxlength="100" autocomplete="off" placeholder="Contoh: Nama lengkap dosen" />
+              <div class="button-row">
+                <button id="saveDosenBtn" class="btn btn-primary btn-small" type="button">Buat folder di Google Drive</button>
+                <button id="cancelNewDosenBtn" class="btn btn-ghost btn-small" type="button">Batal</button>
+              </div>
+            </div>
+          </div>
+
+          <div id="pemilikGroup" class="form-group">
+            <label for="pemilik">Nama pemilik dokumen</label>
+            <input id="pemilik" type="text" maxlength="100" placeholder="Contoh: Nama dosen / unit kerja" />
+          </div>
+          <label for="description">Keterangan (opsional)</label>
+          <textarea id="description" rows="3" maxlength="700" placeholder="Contoh: Sertifikat pelatihan PLC tahun 2026"></textarea>
+          <label for="documentFile">Pilih berkas</label>
+          <input id="documentFile" type="file" required />
+          <p class="hint">PDF, DOCX, XLSX, JPG, dan format lainnya. File besar memakai sesi upload resumable.</p>
+          <button id="uploadBtn" class="btn btn-primary full" type="submit" disabled>Upload ke Google Drive</button>
+        </form>
+      </section>
+      <section class="card" aria-labelledby="searchHeading">
+        <div class="section-title">
+          <span class="section-icon">⌕</span>
+          <div>
+            <h2 id="searchHeading">Cari Dokumen</h2>
+            <p>Cari berdasarkan kategori, nama dosen, dan nama file.</p>
+          </div>
+        </div>
+        <form id="searchForm">
+          <label for="categorySearch">Kategori</label>
+          <select id="categorySearch"></select>
+          <div id="dosenSearchGroup" class="nested-fields" hidden>
+            <label for="dosenSearch">Folder nama dosen</label>
+            <select id="dosenSearch">
+              <option value="__ALL_DOSEN__">Semua dosen</option>
+            </select>
+            <p class="hint">Pilih nama tertentu, atau tampilkan sertifikat dari semua dosen.</p>
+          </div>
+          <label for="query">Nama file mengandung</label>
+          <input id="query" type="search" maxlength="100" placeholder="Contoh: sertifikat, laporan, 2026" />
+          <button id="searchBtn" class="btn btn-secondary full" type="submit" disabled>Tampilkan Dokumen</button>
+        </form>
+        <div class="results-head">
+          <h3>Hasil Pencarian</h3>
+          <span id="resultCount" class="count">0 file</span>
+        </div>
+        <div id="results" class="results" aria-live="polite">
+          <p class="empty">Hubungkan akun Google untuk melihat dokumen.</p>
+        </div>
+      </section>
+    </div>
+    <div id="message" class="message" role="status" aria-live="polite"></div>
+    <footer>
+      GitHub Pages + Google Drive API. Hak akses dokumen mengikuti pengaturan berbagi Google Drive.
+    </footer>
+  </div>
+  <script src="config.js"></script>
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <script src="app.js?v=20261030-subfolder" defer></script>
+</body>
+</html>
